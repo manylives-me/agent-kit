@@ -1,0 +1,4 @@
+node_modules/
+ax-member.json
+*.log
+__pycache__/
