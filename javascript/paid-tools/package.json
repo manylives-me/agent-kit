@@ -1,0 +1,17 @@
+{
+  "name": "manylives-paid-tools",
+  "version": "0.1.0",
+  "description": "67 pay-per-call tools for AI agents (token verdicts, web extraction, crypto data, text AI, site audits) as an MCP server and as plain tool definitions. Pays per call from your own wallet with spend caps; free trial calls without a wallet.",
+  "type": "module",
+  "main": "index.mjs",
+  "exports": { ".": "./index.mjs" },
+  "bin": { "manylives-paid-tools": "mcp.mjs" },
+  "files": ["index.mjs", "mcp.mjs", "README.md", "server.json"],
+  "mcpName": "me.manylives/paid-tools",
+  "keywords": ["mcp", "ai-agents", "x402", "base", "usdc", "tools", "langchain", "vercel-ai"],
+  "homepage": "https://manylives.me/paid",
+  "repository": { "type": "git", "url": "git+https://github.com/manylives-me/agent-kit.git", "directory": "javascript/paid-tools" },
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "dependencies": { "viem": "^2.21.0" }
+}

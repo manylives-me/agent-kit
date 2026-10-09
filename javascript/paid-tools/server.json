@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "me.manylives/paid-tools",
+  "title": "ManyLives paid tools",
+  "description": "67 pay-per-call agent tools: token verdicts, web extraction, crypto data, text AI, site audits.",
+  "version": "0.1.0",
+  "websiteUrl": "https://manylives.me/paid",
+  "repository": { "url": "https://github.com/manylives-me/agent-kit", "source": "github", "subfolder": "javascript/paid-tools" },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "manylives-paid-tools",
+      "version": "0.1.0",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        { "name": "MANYLIVES_WALLET_KEY", "description": "Optional key of a small dedicated Base wallet with USDC; without it tools use the free trial (3 calls a day)", "isRequired": false, "isSecret": true },
+        { "name": "MANYLIVES_MAX_USD_PER_CALL", "description": "Refuse calls priced above this (default 0.05)", "isRequired": false },
+        { "name": "MANYLIVES_MAX_USD_PER_DAY", "description": "Stop paying after this much per day (default 1)", "isRequired": false }
+      ]
+    }
+  ]
+}
