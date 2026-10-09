@@ -10,6 +10,7 @@ const unb64 = (s) => JSON.parse(Buffer.from(s, "base64").toString());
 /**
  * @param {object} [opts]
  * @param {string} [opts.privateKey]   0x key of a Base wallet holding a little USDC (omit to use free trial calls only)
+ * @param {object} [opts.account]      or any signer with `address` and `signTypedData` (a viem account, AgentKit's walletProvider.toSigner())
  * @param {number} [opts.maxUsdPerCall=0.05]  refuse any call priced above this
  * @param {number} [opts.maxUsdPerDay=1]      stop paying after this much in one day (per process)
  * @param {string} [opts.baseUrl="https://api.manylives.me"]
@@ -19,7 +20,7 @@ export function createClient(opts = {}) {
   const baseUrl = (opts.baseUrl ?? "https://api.manylives.me").replace(/\/$/, "");
   const maxPerCall = opts.maxUsdPerCall ?? 0.05, maxPerDay = opts.maxUsdPerDay ?? 1;
   const payTo = (opts.payTo ?? MANYLIVES_TREASURY).toLowerCase();
-  const account = opts.privateKey ? privateKeyToAccount(opts.privateKey) : null;
+  const account = opts.account ?? (opts.privateKey ? privateKeyToAccount(opts.privateKey) : null);
   let spentDay = "", spent = 0;
   let cache = null;
 

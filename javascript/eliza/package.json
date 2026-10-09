@@ -1,0 +1,23 @@
+{
+  "name": "plugin-manylives",
+  "version": "0.1.0",
+  "description": "ElizaOS plugin: verifiable trading-strategy track records, market brief, position sizing and token verdicts for trading agents, pay per call from a capped wallet (free trial without one).",
+  "type": "module",
+  "main": "index.mjs",
+  "exports": { ".": "./index.mjs" },
+  "files": ["index.mjs", "README.md"],
+  "keywords": ["elizaos", "eliza", "plugin", "ai-agents", "trading", "backtesting", "track-record", "x402", "base"],
+  "homepage": "https://manylives.me/trading",
+  "repository": { "type": "git", "url": "git+https://github.com/manylives-me/agent-kit.git", "directory": "javascript/eliza" },
+  "license": "MIT",
+  "dependencies": { "manylives-paid-tools": "^0.2.2" },
+  "peerDependencies": { "@elizaos/core": ">=1.0.0" },
+  "agentConfig": {
+    "pluginType": "elizaos:plugin:1.0.0",
+    "pluginParameters": {
+      "MANYLIVES_PRIVATE_KEY": { "type": "string", "description": "Optional: key of a small dedicated Base wallet holding a little USDC. Without it, the free trial gives 3 calls a day.", "required": false, "sensitive": true },
+      "MANYLIVES_MAX_USD_PER_CALL": { "type": "string", "description": "Refuse calls priced above this (default 0.05)", "required": false },
+      "MANYLIVES_MAX_USD_PER_DAY": { "type": "string", "description": "Stop paying after this much per day (default 1)", "required": false }
+    }
+  }
+}

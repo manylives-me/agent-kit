@@ -3,7 +3,7 @@
   "name": "me.manylives/paid-tools",
   "title": "ManyLives paid tools",
   "description": "140+ pay-per-call agent tools: verifiable strategy track records, token verdicts, web, crypto data.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "websiteUrl": "https://manylives.me/trading",
   "repository": {
     "url": "https://github.com/manylives-me/agent-kit",
@@ -14,7 +14,7 @@
     {
       "registryType": "npm",
       "identifier": "manylives-paid-tools",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "transport": {
         "type": "stdio"
       },
