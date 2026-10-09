@@ -1,6 +1,6 @@
 # manylives-paid-tools
 
-67 pay-per-call tools for AI agents from [ManyLives](https://manylives.me/paid): token verdicts, web page extraction, crypto and on-chain data, text AI, site and MCP audits, and more. No account and no API key. Each call costs US$0.001 to $0.05, paid in USDC on Base from **your own wallet**, with spend caps you set.
+80+ pay-per-call tools for AI agents from [ManyLives](https://manylives.me/paid): verifiable trading-strategy track records, token verdicts, web page extraction, crypto and on-chain data, text AI, site and MCP audits, and more. No account and no API key. Each call costs US$0.001 to $0.05, paid in USDC on Base from **your own wallet**, with spend caps you set.
 
 **Try it free:** without a wallet key every tool runs on the free trial (3 calls a day).
 
@@ -40,6 +40,18 @@ const ml = createClient({ privateKey: process.env.WALLET_KEY, maxUsdPerCall: 0.0
 const v = await ml.call("token/verdict", { token: "0x940181a94A35A4569E4529A3CDfB74e38FD98631" });
 console.log(v.risk, v.flags, v.verdict);
 ```
+
+### Find strategies with verifiable track records
+
+2,000+ strategies make next-period up/down calls (crypto, 5-minute to monthly) that are locked on the Base network before each period and scored afterwards. Rank them over any window, or as of any past date, and verify any call yourself.
+
+```js
+const top = await ml.call("trackrecord/top", { horizon: "1h", window: "30d", sort: "return" });
+const luck = await ml.call("trackrecord/luck", { id: top.top[0].id });   // skill or luck?
+const proof = await ml.call("trackrecord/verify", { id: top.top[0].id }); // Merkle proof + Base tx
+```
+
+General information only: past performance is not an indicator of future performance; not financial advice.
 
 ### Trading bots: check a token before you trade it (US$0.02)
 
