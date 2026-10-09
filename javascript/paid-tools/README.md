@@ -1,6 +1,6 @@
 # manylives-paid-tools
 
-80+ pay-per-call tools for AI agents from [ManyLives](https://manylives.me/paid): verifiable trading-strategy track records, token verdicts, web page extraction, crypto and on-chain data, text AI, site and MCP audits, and more. No account and no API key. Each call costs US$0.001 to $0.05, paid in USDC on Base from **your own wallet**, with spend caps you set.
+140+ pay-per-call tools for AI agents from [ManyLives](https://manylives.me/trading): verifiable trading-strategy track records, token verdicts, web page extraction, crypto and on-chain data, text AI, site and MCP audits, and more. No account and no API key. Each call costs US$0.001 to $0.05, paid in USDC on Base from **your own wallet**, with spend caps you set.
 
 **Try it free:** without a wallet key every tool runs on the free trial (3 calls a day).
 
@@ -89,4 +89,4 @@ const tools = (await ml.tools()).map((t) => new DynamicStructuredTool({
 - Bad input is never charged: the service checks input before the payment settles.
 - Use a dedicated wallet with a small balance, never your main wallet.
 
-Full catalogue with prices and inputs: <https://manylives.me/paid>. MIT licence.
+Full catalogue with prices and inputs: <https://api.manylives.me/paid>. MIT licence.

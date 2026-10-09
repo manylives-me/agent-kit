@@ -2,9 +2,9 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
   "name": "me.manylives/paid-tools",
   "title": "ManyLives paid tools",
-  "description": "80+ pay-per-call agent tools: verifiable strategy track records, token verdicts, web, crypto data.",
-  "version": "0.2.0",
-  "websiteUrl": "https://manylives.me/paid",
+  "description": "140+ pay-per-call agent tools: verifiable strategy track records, token verdicts, web, crypto data.",
+  "version": "0.2.1",
+  "websiteUrl": "https://manylives.me/trading",
   "repository": {
     "url": "https://github.com/manylives-me/agent-kit",
     "source": "github",
@@ -14,7 +14,7 @@
     {
       "registryType": "npm",
       "identifier": "manylives-paid-tools",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "transport": {
         "type": "stdio"
       },

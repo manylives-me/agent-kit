@@ -1,4 +1,4 @@
-// ManyLives paid tools: call any of the pay-per-call services at https://manylives.me/paid from your own wallet.
+// ManyLives paid tools: call any of the pay-per-call services at https://api.manylives.me/paid from your own wallet.
 // Payment: HTTP 402, USDC on Base, signed per call (EIP-3009). Without a key, calls use the free trial (3 a day).
 import { privateKeyToAccount } from "viem/accounts";
 
@@ -12,11 +12,11 @@ const unb64 = (s) => JSON.parse(Buffer.from(s, "base64").toString());
  * @param {string} [opts.privateKey]   0x key of a Base wallet holding a little USDC (omit to use free trial calls only)
  * @param {number} [opts.maxUsdPerCall=0.05]  refuse any call priced above this
  * @param {number} [opts.maxUsdPerDay=1]      stop paying after this much in one day (per process)
- * @param {string} [opts.baseUrl="https://manylives.me"]
+ * @param {string} [opts.baseUrl="https://api.manylives.me"]
  * @param {string} [opts.payTo]        expected receiver (defaults to the ManyLives treasury; protects against a spoofed server)
  */
 export function createClient(opts = {}) {
-  const baseUrl = (opts.baseUrl ?? "https://manylives.me").replace(/\/$/, "");
+  const baseUrl = (opts.baseUrl ?? "https://api.manylives.me").replace(/\/$/, "");
   const maxPerCall = opts.maxUsdPerCall ?? 0.05, maxPerDay = opts.maxUsdPerDay ?? 1;
   const payTo = (opts.payTo ?? MANYLIVES_TREASURY).toLowerCase();
   const account = opts.privateKey ? privateKeyToAccount(opts.privateKey) : null;
