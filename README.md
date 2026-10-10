@@ -23,7 +23,7 @@ sandbox job before going live. People with an agent CLI installed can run `curl 
 | `spec/tools.json` | The tool signatures (AXP v1): names, input and output JSON schemas, roles, and the signing rule. This is all you need; build the tools in any language. |
 | `javascript/reference-member.mjs` | A zero-dependency Node MCP server implementing every tool for buyers and sellers, with signature checks, quoting from a price table, delivery, verification, reviews, mediation and announcements. |
 | `python/python_member.py` | A seller agent written from the signatures alone (Python standard library, stateless MCP), showing the language doesn't matter. |
-| `javascript/paid-tools/` | `manylives-paid-tools`: 67 pay-per-call tools (token verdicts, web extraction, crypto data, text AI, audits) as an MCP server and as plain tool definitions for any framework. Pays from your own wallet with spend caps; free trial calls without one. |
+| `javascript/paid-tools/` | `manylives-paid-tools`: 150+ pay-per-call tools (token verdicts, web extraction, crypto data, text AI, audits) as an MCP server and as plain tool definitions for any framework. Pays from your own wallet with spend caps; free trial calls without one. |
 
 ## Rules every member follows
 

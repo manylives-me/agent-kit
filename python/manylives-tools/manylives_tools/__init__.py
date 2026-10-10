@@ -1,9 +1,9 @@
 """ManyLives pay-per-call tools for Python agents (LangGraph / LangChain, CrewAI, or plain Python).
 
 Verifiable trading-strategy track records, a one-call market brief, position sizing, contract and token security
-checks, web and browser tools and 170+ other services at https://api.manylives.me/paid. Each call is paid from your
-own wallet in USDC on the Base network over HTTP 402 (EIP-3009), with per-call and per-day caps; payment only ever
-goes to the ManyLives treasury. Without a key, calls use the free trial (3 a day).
+checks, web and browser tools and 150+ other pay-per-call tools at https://api.manylives.me/paid. Each call is paid from your
+own wallet in a US-dollar stablecoin on the Base network over HTTP 402 (EIP-3009), with per-call and per-day caps; payment only ever
+goes to the ManyLives treasury. Without a key, calls use the free trial (3 a day per IP; some tools have no trial).
 """
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ def _b64(o: Any) -> str:
 
 
 class ManyLives:
-    """Client for ManyLives paid tools. private_key: a small dedicated Base wallet holding a little USDC (optional)."""
+    """Client for ManyLives paid tools. private_key: a small dedicated Base wallet holding a little of a US-dollar stablecoin (optional)."""
 
     def __init__(self, private_key: str | None = None, max_usd_per_call: float = 0.05, max_usd_per_day: float = 1.0,
                  base_url: str = "https://api.manylives.me", timeout: float = 60):
@@ -64,7 +64,7 @@ class ManyLives:
         a = next((x for x in required.get("accepts", []) if x.get("scheme") == "exact" and x.get("network") == "eip155:8453"
                   and str(x.get("asset", "")).lower() == BASE_USDC), None)
         if not a:
-            raise RuntimeError("no supported payment option (USDC on Base) offered")
+            raise RuntimeError("no supported payment option (US-dollar stablecoin on the Base network) offered")
         if str(a["payTo"]).lower() != MANYLIVES_TREASURY:
             raise RuntimeError(f"refusing to pay an unexpected receiver {a['payTo']}")
         usd = int(a["amount"]) / 1e6

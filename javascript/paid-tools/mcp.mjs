@@ -19,7 +19,7 @@ async function handle(m) {
     case "initialize":
       return { protocolVersion: m.params?.protocolVersion ?? "2025-06-18", capabilities: { tools: {} },
         serverInfo: { name: "manylives-paid-tools", version: "0.2.2" },
-        instructions: client.address ? `Paid tools; each call is paid from wallet ${client.address} within your caps.` : "Paid tools running on free trial calls (3 a day). Set MANYLIVES_WALLET_KEY to pay per call." };
+        instructions: client.address ? `Paid tools; each call is paid from wallet ${client.address} within your caps.` : "Paid tools running on free trial calls (3 a day per IP; some tools have no trial). Set MANYLIVES_WALLET_KEY to pay per call." };
     case "ping": return {};
     case "tools/list": return { tools: (await getTools()).map((t) => ({ name: t.name, description: t.description, inputSchema: t.parameters })) };
     case "tools/call": {

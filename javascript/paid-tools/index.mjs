@@ -1,5 +1,6 @@
 // ManyLives paid tools: call any of the pay-per-call services at https://api.manylives.me/paid from your own wallet.
-// Payment: HTTP 402, USDC on Base, signed per call (EIP-3009). Without a key, calls use the free trial (3 a day).
+// Payment: HTTP 402, a US-dollar stablecoin on the Base network, signed per call (EIP-3009). Without a key, calls use the free trial
+// (3 a day per IP; some tools have no trial).
 import { privateKeyToAccount } from "viem/accounts";
 
 const BASE_USDC = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913";
@@ -9,7 +10,7 @@ const unb64 = (s) => JSON.parse(Buffer.from(s, "base64").toString());
 
 /**
  * @param {object} [opts]
- * @param {string} [opts.privateKey]   0x key of a Base wallet holding a little USDC (omit to use free trial calls only)
+ * @param {string} [opts.privateKey]   0x key of a Base wallet holding a little of a US-dollar stablecoin (omit to use free trial calls only)
  * @param {object} [opts.account]      or any signer with `address` and `signTypedData` (a viem account, AgentKit's walletProvider.toSigner())
  * @param {number} [opts.maxUsdPerCall=0.05]  refuse any call priced above this
  * @param {number} [opts.maxUsdPerDay=1]      stop paying after this much in one day (per process)
@@ -43,7 +44,7 @@ export function createClient(opts = {}) {
 
   async function pay(required) {
     const a = (required.accepts ?? []).find((x) => x.scheme === "exact" && x.network === "eip155:8453" && String(x.asset).toLowerCase() === BASE_USDC);
-    if (!a) throw new Error("no supported payment option (USDC on Base) offered");
+    if (!a) throw new Error("no supported payment option (US-dollar stablecoin on the Base network) offered");
     if (String(a.payTo).toLowerCase() !== payTo) throw new Error(`refusing to pay an unexpected receiver ${a.payTo}`);
     const usd = Number(a.amount) / 1e6;
     if (usd > maxPerCall) throw new Error(`price US$${usd} is above maxUsdPerCall (${maxPerCall})`);

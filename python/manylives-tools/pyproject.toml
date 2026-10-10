@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 dependencies = ["requests>=2.31", "eth-account>=0.11"]
-keywords = ["ai-agents", "langgraph", "langchain", "crewai", "trading", "backtesting", "x402", "base", "usdc", "mcp"]
+keywords = ["ai-agents", "langgraph", "langchain", "crewai", "trading", "backtesting", "base", "pay-per-call", "mcp"]
 
 [project.optional-dependencies]
 langchain = ["langchain-core>=0.3"]

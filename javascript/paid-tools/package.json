@@ -1,7 +1,7 @@
 {
   "name": "manylives-paid-tools",
   "version": "0.2.2",
-  "description": "140+ pay-per-call tools for AI agents: verifiable trading-strategy track records (2,000+ strategies, calls locked on-chain before each period), token verdicts, web extraction, crypto data, text AI, audits. MCP server and plain tool definitions; pays per call from your wallet with caps; free trial calls without one.",
+  "description": "150+ pay-per-call tools for AI agents: verifiable trading-strategy track records (1,000 crypto strategies, calls locked on-chain before each period), token verdicts, web extraction, crypto data, text AI, audits. MCP server and plain tool definitions; pays per call from your wallet with caps; free trial calls (3 a day per IP) without one.",
   "type": "module",
   "main": "index.mjs",
   "exports": {
@@ -27,9 +27,7 @@
     "tools",
     "track-record",
     "trading-strategies",
-    "usdc",
-    "vercel-ai",
-    "x402"
+    "vercel-ai"
   ],
   "homepage": "https://manylives.me/trading",
   "repository": {

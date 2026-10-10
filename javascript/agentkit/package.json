@@ -6,7 +6,7 @@
   "main": "index.mjs",
   "exports": { ".": "./index.mjs" },
   "files": ["index.mjs", "README.md"],
-  "keywords": ["agentkit", "coinbase", "ai-agents", "trading", "backtesting", "track-record", "x402", "base", "usdc"],
+  "keywords": ["agentkit", "coinbase", "ai-agents", "trading", "backtesting", "track-record", "base", "pay-per-call"],
   "homepage": "https://manylives.me/trading",
   "repository": { "type": "git", "url": "git+https://github.com/manylives-me/agent-kit.git", "directory": "javascript/agentkit" },
   "license": "MIT",

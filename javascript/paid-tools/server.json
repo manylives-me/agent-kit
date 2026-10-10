@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
   "name": "me.manylives/paid-tools",
   "title": "ManyLives paid tools",
-  "description": "140+ pay-per-call agent tools: verifiable strategy track records, token verdicts, web, crypto data.",
+  "description": "150+ pay-per-call agent tools: verifiable strategy track records, token verdicts, web, crypto data.",
   "version": "0.2.2",
   "websiteUrl": "https://manylives.me/trading",
   "repository": {
@@ -21,7 +21,7 @@
       "environmentVariables": [
         {
           "name": "MANYLIVES_WALLET_KEY",
-          "description": "Optional key of a small dedicated Base wallet with USDC; without it tools use the free trial (3 calls a day)",
+          "description": "Optional key of a small dedicated Base network wallet holding a US-dollar stablecoin; without it most tools use the free trial (3 calls a day per IP; some tools have no trial)",
           "isRequired": false,
           "isSecret": true
         },

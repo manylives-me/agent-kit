@@ -1,6 +1,6 @@
 // ManyLives action provider for Coinbase AgentKit: verifiable trading-strategy track records, market brief, position
-// sizing, token checks and 150+ other pay-per-call tools, paid from the agent's own AgentKit wallet (USDC on Base,
-// HTTP 402), with per-call and per-day spending caps. Payments only ever go to the ManyLives treasury.
+// sizing, token checks and 150+ other pay-per-call tools, paid from the agent's own AgentKit wallet (a US-dollar stablecoin
+// on the Base network, HTTP 402), with per-call and per-day spending caps. Payments only ever go to the ManyLives treasury.
 import { customActionProvider, EvmWalletProvider } from "@coinbase/agentkit";
 import { createClient } from "manylives-paid-tools";
 import { z } from "zod";
@@ -15,7 +15,7 @@ const NOT_ADVICE = "General information only, not financial advice.";
 export function manylivesActionProvider(opts = {}) {
   const clients = new WeakMap();
   const clientFor = (wallet) => {
-    if (!(wallet instanceof EvmWalletProvider)) throw new Error("ManyLives tools need an EVM wallet on Base");
+    if (!(wallet instanceof EvmWalletProvider)) throw new Error("ManyLives tools need an EVM wallet on the Base network");
     if (!clients.has(wallet)) clients.set(wallet, createClient({ account: wallet.toSigner(), maxUsdPerCall: opts.maxUsdPerCall ?? 0.05, maxUsdPerDay: opts.maxUsdPerDay ?? 1 }));
     return clients.get(wallet);
   };
@@ -26,13 +26,13 @@ export function manylivesActionProvider(opts = {}) {
   return customActionProvider([
     {
       name: "manylives_top_strategies",
-      description: `Rank 2,000+ crypto and stock trading strategies by return over a chosen window (5m to 5y), with win rate, max drawdown, Sharpe, runner-ups and the current leader as a benchmark. Every strategy's calls are locked on the Base network before each period, so records are verifiable. US$0.01 per call. ${NOT_ADVICE}`,
-      schema: z.object({ market: z.enum(["crypto", "stocks"]).default("crypto"), window: z.string().default("7d").describe("e.g. 1h, 1d, 7d, 30d, 1y"), min_periods: z.string().optional() }),
+      description: `Rank 1,000 crypto trading strategies by return after costs (or hit rate or significance) over a window of whole days you pick (e.g. 1d, 7d, 30d), using only calls locked on the Base network before each period (record since 9 Oct 2026; weekly and monthly books have no scored periods until their first period ends). Returns each strategy's return before and after costs, hit rate, periods and a luck check against coin-flip strategies. US$0.01 per call. ${NOT_ADVICE}`,
+      schema: z.object({ market: z.enum(["crypto"]).default("crypto"), window: z.string().default("7d").describe("whole days, e.g. 1d, 7d, 30d, or a start date YYYY-MM-DD"), min_periods: z.string().optional() }),
       invoke: run("/paid/trackrecord/top"),
     },
     {
       name: "manylives_strategy_record",
-      description: `Full track record of one strategy (id like CRY-1h-042): returns, hit rate, drawdown and Sharpe for every window, plus on-chain verification. US$0.01. ${NOT_ADVICE}`,
+      description: `Full record of one strategy (id like CRY-1d-007): daily results, every period for daily and slower books, its on-chain commits, and returns over 7/30/365 days and all time. US$0.01. ${NOT_ADVICE}`,
       schema: z.object({ id: z.string() }),
       invoke: run("/paid/trackrecord/record"),
     },
@@ -56,7 +56,7 @@ export function manylivesActionProvider(opts = {}) {
     },
     {
       name: "manylives_token_verdict",
-      description: "Pre-trade safety verdict for a token on Base (contract checks, liquidity, holder concentration, red flags) in one call. US$0.02.",
+      description: "Pre-trade safety verdict for a token on the Base network (contract checks, liquidity, holder concentration, red flags) in one call. US$0.02.",
       schema: z.object({ token: z.string().describe("token contract address 0x…") }),
       invoke: run("/paid/token/verdict"),
     },

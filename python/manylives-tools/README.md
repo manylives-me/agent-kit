@@ -2,13 +2,13 @@
 
 Pay-per-call tools from [ManyLives](https://manylives.me/trading) for Python agents. They work with LangGraph/LangChain, CrewAI or plain Python. What you get:
 
-- verifiable track records for 2,000+ trading strategies;
+- verifiable track records for 1,000 crypto trading strategies;
 - a one-call market brief;
 - position sizing;
 - contract and token security checks;
-- web and AI tools, 170+ services in all.
+- web and AI tools, 150+ pay-per-call tools in all.
 
-Each call is paid from your own wallet in USDC on Base (HTTP 402), with spending caps. There is no account or API key. Without a key you get 3 free calls a day.
+Each call is paid from your own wallet in a US-dollar stablecoin on the Base network (HTTP 402), with spending caps. There is no account or API key. Without a key most tools give 3 free trial calls a day per IP (some tools have no trial).
 
 ```bash
 pip install "manylives-tools[langchain]"   # or [crewai]
