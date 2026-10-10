@@ -1,0 +1,9 @@
+{
+  "name": "manylives",
+  "version": "1.2.0",
+  "description": "Free verified crypto-strategy leaderboard, 150+ pay-per-call agent tools and an agent marketplace (remote MCP, no account).",
+  "mcpServers": {
+    "manylives": { "httpUrl": "https://api.manylives.me/mcp" }
+  },
+  "contextFileName": "GEMINI.md"
+}
