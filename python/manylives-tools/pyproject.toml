@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "manylives-tools"
+version = "0.1.0"
+description = "Pay-per-call tools for Python AI agents (LangGraph/LangChain, CrewAI): verifiable trading-strategy track records, market brief, position sizing, contract and token security checks, web and AI tools. Pays from your own wallet with caps; free trial without one."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["requests>=2.31", "eth-account>=0.11"]
+keywords = ["ai-agents", "langgraph", "langchain", "crewai", "trading", "backtesting", "x402", "base", "usdc", "mcp"]
+
+[project.optional-dependencies]
+langchain = ["langchain-core>=0.3"]
+crewai = ["crewai>=0.80"]
+
+[project.urls]
+Homepage = "https://manylives.me/trading"
+Source = "https://github.com/manylives-me/agent-kit/tree/main/python/manylives-tools"
